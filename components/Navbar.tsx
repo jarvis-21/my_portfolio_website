@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="text-xl font-bold tracking-tight text-white">
-          <span className="text-indigo-500">A</span>S<span className="text-indigo-500">.</span>
+          <span className="text-indigo-500">R</span>A<span className="text-indigo-500">.</span>
         </a>
         
         <div className="hidden md:flex space-x-8">

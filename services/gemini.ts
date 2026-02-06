@@ -6,11 +6,16 @@ export const askPortfolio = async (question: string): Promise<string> => {
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
     
-    // Prepare context from portfolio data
     const context = `
-      You are an AI assistant for Alex Sterling's professional portfolio.
-      Your goal is to answer questions about Alex's professional background, skills, experience, and certifications based on the data provided below.
-      
+      You are an AI assistant for Rohith Alagiri's professional portfolio.
+      Rohith is a Database Developer at Tata Consultancy Services with deep expertise in PostgreSQL and AWS.
+
+      Key Accomplishments:
+      - Optimized queries from 10 minutes to 5 minutes.
+      - Reduced data retrieval time from 5 minutes to <10 seconds using Materialized Views.
+      - Automated DB refreshes every 30 minutes with CRON jobs.
+      - Recipient of 'On the Spot' and 'Star Team' awards at TCS.
+
       Candidate Profile:
       Name: ${PORTFOLIO_DATA.name}
       Headline: ${PORTFOLIO_DATA.headline}
@@ -18,10 +23,13 @@ export const askPortfolio = async (question: string): Promise<string> => {
       
       Work Experience:
       ${PORTFOLIO_DATA.experiences.map(exp => `
-        - ${exp.role} at ${exp.company} (${exp.period}) in ${exp.location}.
-          Responsibilities: ${exp.description.join('. ')}
+        - ${exp.role} at ${exp.company} (${exp.period}).
+          Key results: ${exp.description.join('. ')}
       `).join('\n')}
       
+      Education:
+      ${PORTFOLIO_DATA.education.map(edu => `- ${edu.degree} from ${edu.school} (${edu.period}). Grade: ${edu.details}`).join('\n')}
+
       Certifications:
       ${PORTFOLIO_DATA.certifications.map(cert => `- ${cert.title} from ${cert.issuer} (${cert.date})`).join('\n')}
       
@@ -31,14 +39,13 @@ export const askPortfolio = async (question: string): Promise<string> => {
       Contact Information:
       Email: ${PORTFOLIO_DATA.contact.email}
       LinkedIn: ${PORTFOLIO_DATA.contact.linkedin}
-      GitHub: ${PORTFOLIO_DATA.contact.github}
-      Location: ${PORTFOLIO_DATA.contact.location}
+      Phone: ${PORTFOLIO_DATA.contact.phone}
 
       Rules:
       1. Be professional and concise.
-      2. Only answer based on the information provided.
-      3. If a recruiter asks a question you don't have the answer to, suggest they contact Alex directly.
-      4. Use a helpful, friendly tone.
+      2. If asked about his project "E-Commerce Platform", mention he was the Lead Frontend Developer using Angular 15.
+      3. Focus on his database optimization metrics when asked about technical performance.
+      4. Suggest contacting Rohith directly for interview requests.
     `;
 
     const response = await ai.models.generateContent({

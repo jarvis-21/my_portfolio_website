@@ -19,6 +19,13 @@ export interface Skill {
   items: string[];
 }
 
+export interface Education {
+  school: string;
+  degree: string;
+  period: string;
+  details: string;
+}
+
 export interface PortfolioData {
   name: string;
   headline: string;
@@ -26,10 +33,12 @@ export interface PortfolioData {
   experiences: WorkExperience[];
   certifications: Certification[];
   skills: Skill[];
+  education: Education[];
   contact: {
     email: string;
     linkedin: string;
     github: string;
     location: string;
+    phone: string;
   };
 }

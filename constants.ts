@@ -2,82 +2,83 @@
 import { PortfolioData } from './types';
 
 export const PORTFOLIO_DATA: PortfolioData = {
-  name: "Alex Sterling",
-  headline: "Senior Software Engineer & Product Strategist",
-  summary: "Results-driven Senior Software Engineer with 8+ years of experience building scalable distributed systems and user-centric web applications. Expert in React, Node.js, and Cloud Infrastructure. Proven track record of leading cross-functional teams to deliver high-impact features for Fortune 500 companies and fast-growing startups.",
+  name: "Rohith Alagiri",
+  headline: "Database Developer & AWS Certified Professional",
+  summary: "Results-driven Database Developer at Tata Consultancy Services with a focus on high-performance database architectures and cloud integration. Expert in PostgreSQL tuning, reducing query times from minutes to seconds. Skilled in AWS infrastructure and building robust CI/CD pipelines for database deployments.",
   experiences: [
     {
-      company: "TechNova Solutions",
-      role: "Senior Software Engineer",
-      period: "Jan 2021 - Present",
-      location: "San Francisco, CA",
+      company: "Tata Consultancy Services",
+      role: "Database Developer",
+      period: "Sep 2022 - Present",
+      location: "India",
       description: [
-        "Architected and deployed a microservices-based platform serving 2M+ daily active users, reducing latency by 40%.",
-        "Lead a team of 6 engineers to migrate legacy monolith to React/Next.js and AWS serverless architecture.",
-        "Implemented automated CI/CD pipelines using GitHub Actions, reducing deployment time from hours to minutes."
-      ]
-    },
-    {
-      company: "Global Stream Inc.",
-      role: "Full Stack Developer",
-      period: "June 2018 - Dec 2020",
-      location: "Austin, TX",
-      description: [
-        "Developed high-performance video streaming dashboards used by enterprise clients for real-time analytics.",
-        "Optimized database queries for PostgreSQL, improving data retrieval speeds by 60% for large-scale datasets.",
-        "Collaborated with UX designers to implement a standardized design system across 4 distinct product lines."
-      ]
-    },
-    {
-      company: "StartUp Edge",
-      role: "Junior Web Developer",
-      period: "May 2016 - May 2018",
-      location: "Remote",
-      description: [
-        "Built responsive web interfaces for various B2B clients using React and Redux.",
-        "Integrated third-party APIs for payment processing and CRM management.",
-        "Successfully launched 5+ MVP projects for early-stage startups."
+        "Optimized complex queries reducing execution time from 10 minutes to 5 minutes through execution plan analysis and join indexing.",
+        "Created and managed Materialized Views to improve data retrieval speeds from 5 minutes to less than 10 seconds.",
+        "Designed and maintained PL/SQL scripts and stored procedures for critical business logic implementation.",
+        "Automated materialized view refreshes using CRON jobs every 30 minutes to ensure real-time data accuracy.",
+        "Managed database deployments using GitHub Actions and Jenkins, resolving complex deadlock issues and Liquibase errors."
       ]
     }
   ],
   certifications: [
     {
-      title: "AWS Certified Solutions Architect – Professional",
-      issuer: "Amazon Web Services",
+      title: "AWS Certified Developer - Associate",
+      issuer: "Amazon Web Services (AWS)",
+      date: "2025",
+      link: "#"
+    },
+    {
+      title: "AWS Certified Cloud Practitioner",
+      issuer: "Amazon Web Services (AWS)",
       date: "2023",
       link: "#"
     },
     {
-      title: "Google Professional Cloud Developer",
-      issuer: "Google Cloud",
-      date: "2022",
+      title: "Full Stack Training",
+      issuer: "TCS - Tech Seal",
+      date: "2023",
       link: "#"
     },
     {
-      title: "Meta Front-End Developer Professional Certificate",
-      issuer: "Meta / Coursera",
-      date: "2021",
+      title: "Gen AI Certification",
+      issuer: "TCS",
+      date: "2023",
       link: "#"
     }
   ],
   skills: [
     {
-      category: "Frontend",
-      items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux", "Framer Motion"]
+      category: "Database",
+      items: ["PostgreSQL", "SQL Integration", "Database Tuning", "PL/SQL", "Liquibase"]
     },
     {
-      category: "Backend",
-      items: ["Node.js", "Python", "Go", "PostgreSQL", "Redis", "GraphQL"]
+      category: "Cloud (AWS)",
+      items: ["S3", "RDS", "Redshift", "Glue", "Lambda", "EC2", "SQS", "SNS", "CloudWatch"]
     },
     {
-      category: "Infrastructure",
-      items: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD", "Serverless"]
+      category: "Programming & Tools",
+      items: ["Python", "GIT", "GitHub Actions", "Jenkins", "Docker"]
+    }
+  ],
+  education: [
+    {
+      school: "University of Madras",
+      degree: "Master of Computer Applications (MCA)",
+      period: "July 2023 - June 2025",
+      details: "Correspondence - 7.7 CGPA [First Class]"
+    },
+    {
+      school: "RKM Vivekananda College",
+      degree: "Bachelor of Computer Applications (BCA)",
+      period: "July 2019 - June 2022",
+      details: "Full-Time - 8.5 CGPA [First Class]"
     }
   ],
   contact: {
-    email: "alex.sterling@example.com",
-    linkedin: "https://linkedin.com/in/alexsterling",
-    github: "https://github.com/alexsterling",
-    location: "San Francisco, CA"
+    email: "rohithalagiri15@gmail.com",
+    linkedin: "https://www.linkedin.com/in/rohithalagiri",
+    github: "https://github.com/rohithalagiri",
+    location: "India",
+    phone: "+91 9150790182"
   }
 };
