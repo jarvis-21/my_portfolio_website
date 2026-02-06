@@ -1,6 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { askPortfolio } from '../services/gemini';
+import { PORTFOLIO_DATA } from '../constants';
 
 interface Message {
   text: string;
@@ -10,7 +11,7 @@ interface Message {
 const PortfolioChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { text: "Hi! I'm Alex's AI assistant. Ask me anything about their experience or skills!", isAi: true }
+    { text: `Hi! I'm ${PORTFOLIO_DATA.name.split(' ')[0]}'s AI assistant. Ask me anything about my experience in Database Development or AWS!`, isAi: true }
   ]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +57,7 @@ const PortfolioChat: React.FC = () => {
           {/* Messages */}
           <div 
             ref={scrollRef}
-            className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide"
+            className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide bg-slate-950/50"
           >
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.isAi ? 'justify-start' : 'justify-end'}`}>
@@ -81,7 +82,7 @@ const PortfolioChat: React.FC = () => {
           </div>
 
           {/* Input */}
-          <div className="p-4 border-t border-slate-800">
+          <div className="p-4 border-t border-slate-800 bg-slate-900">
             <form 
               onSubmit={(e) => { e.preventDefault(); handleSend(); }}
               className="flex space-x-2"
@@ -91,7 +92,7 @@ const PortfolioChat: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask something..."
-                className="flex-1 bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
+                className="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-indigo-500"
               />
               <button 
                 type="submit"

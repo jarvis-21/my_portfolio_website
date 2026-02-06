@@ -1,21 +1,26 @@
 
 {
-  "name": "ai-professional-portfolio",
+  "name": "rohith-alagiri-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Professional AI-powered portfolio website",
+  "description": "Professional Database Developer Portfolio for Rohith Alagiri",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "@google/genai": "^1.40.0",
     "framer-motion": "^11.11.1"
   },
-  "keywords": [
-    "portfolio",
-    "react",
-    "gemini",
-    "ai",
-    "tailwind"
-  ],
-  "author": "Alex Sterling"
+  "devDependencies": {
+    "vite": "^6.0.0",
+    "typescript": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
+  },
+  "author": "Rohith Alagiri"
 }
