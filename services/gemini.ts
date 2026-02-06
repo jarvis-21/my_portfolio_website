@@ -4,7 +4,15 @@ import { PORTFOLIO_DATA } from "../constants";
 
 export const askPortfolio = async (question: string): Promise<string> => {
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+    // API_KEY is injected by Vite during the build process
+    const apiKey = process.env.API_KEY;
+    
+    if (!apiKey) {
+      console.warn("Gemini API Key is missing. Check Vercel environment variables.");
+      return "The AI assistant is currently unavailable. Please reach out to me via email for any inquiries!";
+    }
+
+    const ai = new GoogleGenAI({ apiKey });
     
     const context = `
       You are an AI assistant for Rohith Alagiri's professional portfolio.
