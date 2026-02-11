@@ -60,7 +60,7 @@ const App: React.FC = () => {
               <div className="relative z-10 aspect-[4/5] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
                 {/* User: Replace this src with your uploaded profile photo path */}
                 <img 
-                  src="/profile.png" 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
                   alt="Rohith Alagiri"
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
