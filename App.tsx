@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -14,8 +15,7 @@ const fadeIn: Variants = {
 };
 
 const App: React.FC = () => {
-  // Use the local path directly. In Vite, if the file is in the root/public, 
-  // referencing it as a relative path string in the src attribute is highly compatible.
+  // Use a string path directly to prevent module resolution errors for the PNG
   const profilePicPath = "./profile.png";
 
   return (
@@ -69,7 +69,7 @@ const App: React.FC = () => {
                   alt={PORTFOLIO_DATA.name}
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out"
                   onError={(e) => {
-                    // Fallback to a placeholder if the local image fails to load
+                    // This fallback triggers if profile.png is not found at the root
                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop";
                   }}
                 />
@@ -151,116 +151,75 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Awards Section */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            className="p-12 glass-card rounded-[2.5rem] border border-indigo-500/20 relative overflow-hidden group"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-          >
-            <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity duration-1000">
-               <svg width="240" height="240" viewBox="0 0 24 24" fill="indigo">
-                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" />
-               </svg>
-            </div>
-            <div className="relative z-10">
-              <span className="text-indigo-500 font-bold uppercase tracking-[0.4em] text-[10px] mb-6 block">Recognition</span>
-              <h3 className="text-4xl md:text-6xl font-bold text-white mb-4 italic tracking-tight font-serif">On the Spot Award</h3>
-              <p className="text-indigo-400 font-bold mb-8 tracking-[0.2em] uppercase text-xs">Tata Consultancy Services (TCS)</p>
-              <div className="w-20 h-px bg-indigo-500/30 mb-8" />
-              <p className="text-xl text-slate-400 max-w-2xl leading-relaxed font-light">
-                Honored for engineering a high-efficiency automation solution for materialized view refreshes, significantly enhancing data reliability and pipeline performance for the Cigna Healthcare account.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Skills Grid */}
-      <section id="skills" className="py-32 px-6 bg-slate-950/30">
+      {/* Skills Section */}
+      <section id="skills" className="py-32 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-20 text-center">
-            <h2 className="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-4">Technical Stack</h2>
-            <h3 className="text-4xl font-bold text-white">Expertise & Tools.</h3>
+            <h2 className="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-4">Stack</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Core Competencies.</h3>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PORTFOLIO_DATA.skills.map((skillGroup, idx) => (
-              <div key={idx} className="p-8 glass-card rounded-2xl border border-white/5 hover:border-indigo-500/20 transition-all duration-300">
-                <h4 className="text-indigo-500 font-bold uppercase tracking-[0.2em] text-[10px] mb-6">{skillGroup.category}</h4>
-                <div className="flex flex-wrap gap-2">
-                  {skillGroup.items.map((skill, i) => (
-                    <span key={i} className="px-3 py-1.5 rounded-lg bg-slate-900/40 border border-slate-800 text-[11px] text-slate-300 font-medium hover:border-indigo-500/50 transition-colors">
-                      {skill}
-                    </span>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {PORTFOLIO_DATA.skills.map((skill, idx) => (
+              <motion.div 
+                key={idx}
+                className="p-8 glass-card rounded-2xl border border-white/5 hover:border-indigo-500/30 transition-all group"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+              >
+                <h4 className="text-indigo-400 font-bold text-sm uppercase tracking-widest mb-6">{skill.category}</h4>
+                <div className="space-y-3">
+                  {skill.items.map((item, i) => (
+                    <div key={i} className="text-slate-300 text-sm font-medium flex items-center">
+                      <div className="w-1 h-1 bg-slate-700 rounded-full mr-3 group-hover:bg-indigo-500 transition-colors" />
+                      {item}
+                    </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Education & Certs */}
-      <section className="py-32 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
-          <div>
-            <h2 className="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-10">Education</h2>
-            {PORTFOLIO_DATA.education.map((edu, i) => (
-              <div key={i} className="mb-8">
-                <h4 className="text-2xl font-bold text-white mb-2">{edu.school}</h4>
-                <p className="text-indigo-400 font-semibold text-sm mb-2">{edu.degree}</p>
-                <p className="text-slate-500 text-xs uppercase tracking-widest">{edu.period} • {edu.details}</p>
-              </div>
-            ))}
-          </div>
-          <div>
-            <h2 className="text-indigo-500 font-bold uppercase tracking-widest text-xs mb-10">Certifications</h2>
-            <div className="space-y-6">
-              {PORTFOLIO_DATA.certifications.map((cert, i) => (
-                <div key={i} className="flex items-center justify-between p-4 glass-card rounded-xl border border-white/5 hover:bg-slate-900/40 transition-colors">
-                  <div>
-                    <h5 className="text-white font-bold text-sm">{cert.title}</h5>
-                    <p className="text-slate-500 text-[10px] uppercase tracking-widest">{cert.issuer}</p>
-                  </div>
-                  <span className="text-indigo-500 text-[10px] font-bold">{cert.date}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-40 px-6 border-t border-slate-900">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-6xl md:text-[100px] font-bold text-white tracking-tighter mb-16 leading-none">
-            Ready for the <br/> <span className="text-slate-700">next challenge.</span>
-          </h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-            <a href={`mailto:${PORTFOLIO_DATA.contact.email}`} className="text-2xl font-light text-slate-300 hover:text-indigo-400 transition-all">
-              {PORTFOLIO_DATA.contact.email}
-            </a>
-            <div className="flex gap-10">
-              <a href={PORTFOLIO_DATA.contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors">LinkedIn</a>
-              <a href={PORTFOLIO_DATA.contact.github} target="_blank" rel="noopener noreferrer" className="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors">GitHub</a>
+      <section id="contact" className="py-32 px-6 bg-indigo-600">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+          >
+            <h2 className="text-white/70 font-bold uppercase tracking-widest text-xs mb-4">Get In Touch</h2>
+            <h3 className="text-5xl md:text-7xl font-bold text-white mb-12 tracking-tighter">Let's build something <span className="text-indigo-200">extraordinary.</span></h3>
+            
+            <div className="flex flex-wrap justify-center gap-6">
+              <a href={`mailto:${PORTFOLIO_DATA.contact.email}`} className="px-10 py-4 bg-white text-black font-black uppercase text-xs tracking-widest rounded-full hover:bg-black hover:text-white transition-all transform hover:-translate-y-1">
+                Email Me
+              </a>
+              <a href={PORTFOLIO_DATA.contact.linkedin} target="_blank" rel="noopener noreferrer" className="px-10 py-4 bg-transparent border-2 border-white/20 text-white font-black uppercase text-xs tracking-widest rounded-full hover:bg-white/10 transition-all transform hover:-translate-y-1">
+                LinkedIn
+              </a>
             </div>
-          </div>
+
+            <div className="mt-20 pt-10 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-white/50 text-xs font-bold uppercase tracking-widest">
+              <div>{PORTFOLIO_DATA.contact.location}</div>
+              <div>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}</div>
+              <div className="flex gap-6">
+                <a href={PORTFOLIO_DATA.contact.github} className="hover:text-white transition-colors">Github</a>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
-
-      <footer className="py-12 text-center text-slate-800">
-        <p className="text-[9px] uppercase tracking-[0.6em] font-black">
-          ROHITH ALAGIRI • AWS DATA ENGINEER • CHENNAI, INDIA
-        </p>
-      </footer>
 
       <PortfolioChat />
     </div>
   );
 };
 
+// Fix: Add default export to resolve "Module has no default export" error in index.tsx
 export default App;

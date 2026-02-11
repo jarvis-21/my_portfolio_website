@@ -65,7 +65,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   contact: {
     email: "rohithalagiri15@gmail.com",
     linkedin: "https://linkedin.com/in/rohithalagiri",
-    github: "https://github.com/jarvis-21",
+    github: "https://github.com/rohithalagiri",
     location: "Chennai, India",
     phone: "9150790182"
   }
