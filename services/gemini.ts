@@ -1,47 +1,46 @@
 
 import { GoogleGenAI } from "@google/genai";
-import { PORTFOLIO_DATA } from "../constants";
 
 export const askPortfolio = async (question: string): Promise<string> => {
   try {
-    const apiKey = process.env.API_KEY;
-    
-    if (!apiKey) {
-      return "The AI assistant is currently offline. Please reach out to Rohith via email for any inquiries!";
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
+    // Initializing with direct access to process.env.API_KEY as per instructions
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     
     const context = `
       You are a professional AI assistant for Rohith Alagiri's portfolio.
       
       CORE IDENTITY:
       - Name: Rohith Alagiri
-      - Title: AWS Data Engineer
+      - Role: AWS Data Engineer
       - Location: Chennai, India
-      - Company: Tata Consultancy Services (Cigna Healthcare)
+      - Company: Tata Consultancy Services (TCS), working for Cigna Healthcare.
       
-      KEY ACHIEVEMENTS TO HIGHLIGHT:
-      - Optimized high-latency queries from 10 minutes down to under 10 seconds.
-      - Architected a centralized data lake using AWS Lake Formation with Tag-Based Access Control (TBAC).
-      - Developed PySpark applications on Amazon EMR clusters for large-scale batch processing.
-      - Awarded 'On the Spot' award at TCS for automating materialized view refreshes.
+      PROFESSIONAL SUMMARY:
+      - 3 years of experience in data engineering and database optimization.
+      - Expertise: AWS (Lake Formation, EMR, Redshift, Glue), PySpark, SQL/PL/SQL.
+      - Key Success: Reduced query latency by 50%.
       
-      TECHNICAL STACK:
-      - Data Engineering: AWS Lake Formation, EMR, PySpark, Step Functions, Hive.
-      - Cloud: AWS Lambda, S3, Glue, Redshift, DynamoDB.
-      - Database: Postgres PL/SQL, Liquibase, Database Tuning.
-      - AI/Tools: GitHub Copilot, GitHub Actions, CI/CD.
+      DETAILED EXPERIENCE (TCS):
+      - Built Scalable Data Lakes using AWS Lake Formation & Tag-Based Access Control (TBAC).
+      - Developed PySpark apps on Amazon EMR clusters for S3 data.
+      - Orchestrated pipelines using AWS Step Functions.
+      - Implemented Redshift Spectrum and Materialized Views for high-speed querying.
+      - Performance Engineering: Optimized queries from 10 minutes to under 10 seconds.
+      - Automation: Built a custom CRON job for 30-minute materialized view refreshes (won 'On the Spot' award).
+      - Tools: GitHub Copilot, Liquibase, DBeaver, Postman.
 
-      EDUCATION:
-      - Master of Computer Applications (MCA), University of Madras (Current).
+      EDUCATION & CERTS:
+      - MCA from University of Madras (2023-2025).
+      - AWS Certified Data Engineer - Associate.
+      - GitHub Copilot Certified.
 
       CONVERSATION STYLE:
-      - Professional, technically accurate, and confident.
-      - Keep responses concise (under 3 sentences unless asked for detail).
-      - If asked how to contact him, provide: rohithalagiri15@gmail.com or his LinkedIn profile.
+      - Professional, technically insightful, and helpful.
+      - Keep responses focused and efficient.
+      - Provide contact details if requested: rohithalagiri15@gmail.com.
     `;
 
+    // Using generateContent with recommended model and config structure
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: question,
@@ -51,6 +50,7 @@ export const askPortfolio = async (question: string): Promise<string> => {
       },
     });
 
+    // Accessing .text property directly as per the correct method defined in guidelines
     return response.text || "I'm sorry, I couldn't process that. Please try rephrasing.";
   } catch (error) {
     console.error("Gemini Error:", error);
