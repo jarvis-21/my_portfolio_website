@@ -3,82 +3,77 @@ import { PortfolioData } from './types';
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Rohith Alagiri",
-  headline: "Database Developer & AWS Certified Professional",
-  summary: "Results-driven Database Developer at Tata Consultancy Services with a focus on high-performance database architectures and cloud integration. Expert in PostgreSQL tuning, reducing query times from minutes to seconds. Skilled in AWS infrastructure and building robust CI/CD pipelines for database deployments.",
+  headline: "AWS Data Engineer",
+  summary: "Results-driven Data Engineer with 3 years of experience specializing in building scalable data pipelines, optimizing complex Postgres SQL/PL/SQL queries, and leveraging AWS services for data integration. Proven track record of reducing query latency by 50% and automating data refresh cycles using cloud-native tools.",
   experiences: [
     {
-      company: "Tata Consultancy Services",
-      role: "Database Developer",
+      company: "Tata Consultancy Services (Cigna Healthcare)",
+      role: "AWS Data Engineer",
       period: "Sep 2022 - Present",
-      location: "India",
+      location: "Chennai, India",
       description: [
-        "Optimized complex queries reducing execution time from 10 minutes to 5 minutes through execution plan analysis and join indexing.",
-        "Created and managed Materialized Views to improve data retrieval speeds from 5 minutes to less than 10 seconds.",
-        "Designed and maintained PL/SQL scripts and stored procedures for critical business logic implementation.",
-        "Automated materialized view refreshes using CRON jobs every 30 minutes to ensure real-time data accuracy.",
-        "Managed database deployments using GitHub Actions and Jenkins, resolving complex deadlock issues and Liquibase errors."
+        "Architected a centralized data lake using AWS Lake Formation with Tag-Based Access Control (TBAC) for secure consumer access.",
+        "Developed and deployed PySpark applications on Amazon EMR clusters to process large-scale batch datasets in S3.",
+        "Leveraged AWS Step Functions to automate end-to-end data processing workflows and orchestrate on-demand EMR jobs.",
+        "Implemented Amazon Redshift solutions using Redshift Spectrum and Materialized Views to accelerate complex analytical queries.",
+        "Optimized high-latency queries from 10 minutes down to under 10 seconds through query plan analysis and join-condition indexing.",
+        "Engineered a custom CRON Job scheduler to refresh materialized views every 30 minutes, ensuring data accuracy.",
+        "Designed and maintained robust PL/SQL scripts and database schemas to support core business logic.",
+        "Managed database deployments via GitHub and automated pipelines, troubleshooting Liquibase and deadlock issues."
       ]
     }
   ],
   certifications: [
     {
-      title: "AWS Certified Developer - Associate",
-      issuer: "Amazon Web Services (AWS)",
-      date: "2025",
+      title: "AWS Certified Data Engineer - Associate",
+      issuer: "Amazon Web Services",
+      date: "2024",
+      link: "#"
+    },
+    {
+      title: "GitHub Copilot",
+      issuer: "GitHub",
+      date: "2024",
       link: "#"
     },
     {
       title: "AWS Certified Cloud Practitioner",
-      issuer: "Amazon Web Services (AWS)",
-      date: "2023",
-      link: "#"
-    },
-    {
-      title: "Full Stack Training",
-      issuer: "TCS - Tech Seal",
-      date: "2023",
-      link: "#"
-    },
-    {
-      title: "Gen AI Certification",
-      issuer: "TCS",
+      issuer: "Amazon Web Services",
       date: "2023",
       link: "#"
     }
   ],
   skills: [
     {
-      category: "Database",
-      items: ["PostgreSQL", "SQL Integration", "Database Tuning", "PL/SQL", "Liquibase"]
+      category: "Data Engineering",
+      items: ["AWS Lake Formation", "Amazon EMR", "PySpark", "AWS Step Functions", "Hive"]
     },
     {
-      category: "Cloud (AWS)",
-      items: ["S3", "RDS", "Redshift", "Glue", "Lambda", "EC2", "SQS", "SNS", "CloudWatch"]
+      category: "Cloud & AWS",
+      items: ["Lambda", "S3", "Glue", "Redshift", "DynamoDB", "API Gateway", "Secrets Manager", "SNS", "SQS"]
     },
     {
-      category: "Programming & Tools",
-      items: ["Python", "GIT", "GitHub Actions", "Jenkins", "Docker"]
+      category: "Database Dev",
+      items: ["Postgres PL/SQL", "SQL Integration", "Database Tuning", "Liquibase", "Schema Architecture"]
+    },
+    {
+      category: "Tools & AI",
+      items: ["GitHub Copilot", "GitHub Actions", "CI/CD", "CRON Scheduling", "JIRA", "DBeaver", "Postman"]
     }
   ],
   education: [
     {
       school: "University of Madras",
       degree: "Master of Computer Applications (MCA)",
-      period: "July 2023 - June 2025",
-      details: "Correspondence - 7.7 CGPA [First Class]"
-    },
-    {
-      school: "RKM Vivekananda College",
-      degree: "Bachelor of Computer Applications (BCA)",
-      period: "July 2019 - June 2022",
-      details: "Full-Time - 8.5 CGPA [First Class]"
+      period: "06/2023 - 07/2025",
+      details: "Chennai, India"
     }
   ],
   contact: {
     email: "rohithalagiri15@gmail.com",
     linkedin: "https://www.linkedin.com/in/rohithalagiri",
     github: "https://github.com/rohithalagiri",
-    location: "India",
+    location: "Chennai, India",
     phone: "+91 9150790182"
   }
 };

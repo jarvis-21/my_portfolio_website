@@ -4,56 +4,42 @@ import { PORTFOLIO_DATA } from "../constants";
 
 export const askPortfolio = async (question: string): Promise<string> => {
   try {
-    // API_KEY is injected by Vite during the build process
     const apiKey = process.env.API_KEY;
     
     if (!apiKey) {
-      console.warn("Gemini API Key is missing. Check Vercel environment variables.");
-      return "The AI assistant is currently unavailable. Please reach out to me via email for any inquiries!";
+      return "The AI assistant is currently offline. Please reach out to Rohith via email for any inquiries!";
     }
 
     const ai = new GoogleGenAI({ apiKey });
     
     const context = `
-      You are an AI assistant for Rohith Alagiri's professional portfolio.
-      Rohith is a Database Developer at Tata Consultancy Services with deep expertise in PostgreSQL and AWS.
-
-      Key Accomplishments:
-      - Optimized queries from 10 minutes to 5 minutes.
-      - Reduced data retrieval time from 5 minutes to <10 seconds using Materialized Views.
-      - Automated DB refreshes every 30 minutes with CRON jobs.
-      - Recipient of 'On the Spot' and 'Star Team' awards at TCS.
-
-      Candidate Profile:
-      Name: ${PORTFOLIO_DATA.name}
-      Headline: ${PORTFOLIO_DATA.headline}
-      Summary: ${PORTFOLIO_DATA.summary}
+      You are a professional AI assistant for Rohith Alagiri's portfolio.
       
-      Work Experience:
-      ${PORTFOLIO_DATA.experiences.map(exp => `
-        - ${exp.role} at ${exp.company} (${exp.period}).
-          Key results: ${exp.description.join('. ')}
-      `).join('\n')}
+      CORE IDENTITY:
+      - Name: Rohith Alagiri
+      - Title: AWS Data Engineer
+      - Location: Chennai, India
+      - Company: Tata Consultancy Services (Cigna Healthcare)
       
-      Education:
-      ${PORTFOLIO_DATA.education.map(edu => `- ${edu.degree} from ${edu.school} (${edu.period}). Grade: ${edu.details}`).join('\n')}
+      KEY ACHIEVEMENTS TO HIGHLIGHT:
+      - Optimized high-latency queries from 10 minutes down to under 10 seconds.
+      - Architected a centralized data lake using AWS Lake Formation with Tag-Based Access Control (TBAC).
+      - Developed PySpark applications on Amazon EMR clusters for large-scale batch processing.
+      - Awarded 'On the Spot' award at TCS for automating materialized view refreshes.
+      
+      TECHNICAL STACK:
+      - Data Engineering: AWS Lake Formation, EMR, PySpark, Step Functions, Hive.
+      - Cloud: AWS Lambda, S3, Glue, Redshift, DynamoDB.
+      - Database: Postgres PL/SQL, Liquibase, Database Tuning.
+      - AI/Tools: GitHub Copilot, GitHub Actions, CI/CD.
 
-      Certifications:
-      ${PORTFOLIO_DATA.certifications.map(cert => `- ${cert.title} from ${cert.issuer} (${cert.date})`).join('\n')}
-      
-      Skills:
-      ${PORTFOLIO_DATA.skills.map(s => `- ${s.category}: ${s.items.join(', ')}`).join('\n')}
-      
-      Contact Information:
-      Email: ${PORTFOLIO_DATA.contact.email}
-      LinkedIn: ${PORTFOLIO_DATA.contact.linkedin}
-      Phone: ${PORTFOLIO_DATA.contact.phone}
+      EDUCATION:
+      - Master of Computer Applications (MCA), University of Madras (Current).
 
-      Rules:
-      1. Be professional and concise.
-      2. If asked about his project "E-Commerce Platform", mention he was the Lead Frontend Developer using Angular 15.
-      3. Focus on his database optimization metrics when asked about technical performance.
-      4. Suggest contacting Rohith directly for interview requests.
+      CONVERSATION STYLE:
+      - Professional, technically accurate, and confident.
+      - Keep responses concise (under 3 sentences unless asked for detail).
+      - If asked how to contact him, provide: rohithalagiri15@gmail.com or his LinkedIn profile.
     `;
 
     const response = await ai.models.generateContent({
@@ -65,9 +51,9 @@ export const askPortfolio = async (question: string): Promise<string> => {
       },
     });
 
-    return response.text || "I'm sorry, I couldn't process that request.";
+    return response.text || "I'm sorry, I couldn't process that. Please try rephrasing.";
   } catch (error) {
     console.error("Gemini Error:", error);
-    return "I'm having trouble connecting to my brain right now. Please try again later or contact me via email!";
+    return "I'm having trouble connecting to my knowledge base. Please contact Rohith directly!";
   }
 };
