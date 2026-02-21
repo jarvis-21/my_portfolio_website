@@ -70,7 +70,7 @@ const App: React.FC = () => {
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out"
                   onError={(e) => {
                     // This fallback triggers if profile.png is not found at the root
-                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop";
+                    (e.target as HTMLImageElement).src = "./profile.png";
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
